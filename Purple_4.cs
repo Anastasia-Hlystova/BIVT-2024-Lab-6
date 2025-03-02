@@ -99,8 +99,12 @@ namespace Lab_6
             }
             public static Group Merge( Group group1, Group group2)
             {
-                Group merged = new Group("Финалисты");
-                Sportsman[] g1 = group1._sportsmen, g2 = group2._sportsmen;
+                group1.Sort();
+                group2.Sort();
+                var merged = new Group("Финалисты");
+                var g1 = group1._sportsmen;
+                var g2 = group2._sportsmen;
+                
                 if (g1 == null) g1 = new Sportsman[0];
                 if (g2 == null) g2 = new Sportsman[0];
                 merged._sportsmen = new Sportsman[g1.Length + g2.Length];
