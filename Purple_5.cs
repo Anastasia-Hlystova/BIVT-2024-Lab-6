@@ -78,7 +78,7 @@ namespace Lab_6
                 result[result.Length-1] = R;
                 _responses = result;
             }
-            public string[] GetTopResponse(int question)
+            public string[] GetTopResponses(int question)
             {
                 if (_responses == null || question < 1 || question > 3) { return null; }
                 if (question == 1)
