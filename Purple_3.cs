@@ -32,12 +32,12 @@ namespace Lab_6
                     return copy;
                 }
             }
-            public double[] Places
+            public int[] Places
             {
                 get
                 {
                     if (_places == null) { return null; }
-                    double[] copy = new double[_places.Length];
+                    int[] copy = new int[_places.Length];
                     Array.Copy(_places, copy, _places.Length);
                     return copy;
                 }
@@ -112,11 +112,22 @@ namespace Lab_6
 
                 for(int i = 0; i < judges; i++)
                 {
-                    var sortedparticipants = participants.OrderByDescending(p => p.Marks != null && i < p.Marks.Length ? p.Marks[i] : 0).ToArray();
-                    for(int j = 0;  j < sortedparticipants.Length; j++)
+                    //var sortedparticipants = participants.OrderByDescending(p => p.Marks != null && i < p.Marks.Length ? p.Marks[i] : 0).ToArray();
+                    //for(int j = 0;  j < sortedparticipants.Length; j++)
+                    //{
+                    //    sortedparticipants[j].FillArrayPlaces(i, j + 1);
+                    //}
+
+                    Array.Sort(participants, (a, b) =>
                     {
-                        sortedparticipants[j].FillArrayPlaces(i, j + 1);
-                    }
+                        double A = a.Marks != null ? a.Marks[i] : 0, B = b.Marks != null ? b.Marks[i] : 0;
+                        double x = A - B;
+                        if (x < 0) return 1;
+                        else if (x > 0) return -1;
+                        else return 0;
+                    });
+                    for (int j = 0; j < participants.Length; j++)
+                        participants[j].FillArrayPlaces(i, j + 1);
                 }
 
             }
