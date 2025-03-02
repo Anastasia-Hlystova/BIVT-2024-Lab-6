@@ -60,14 +60,20 @@ namespace Lab_6
             public Group(Group n)
             {
                 _name = n.Name;
-                if (n.Sportsmen == null) { _sportsmen = new Sportsman[0]; }
-                _sportsmen = new Sportsman[n.Sportsmen.Length];
-                Array.Copy(n.Sportsmen, _sportsmen, n.Sportsmen.Length);
+                if (n.Sportsmen != null)
+                {
+                    _sportsmen = new Sportsman[n.Sportsmen.Length];
+                    Array.Copy(n.Sportsmen, _sportsmen, n.Sportsmen.Length);
+                }
+                else
+                {
+                    _sportsmen = new Sportsman[0];
+                }
             }
             public void Add(Sportsman man)
             {
                 if (_sportsmen == null) return;
-                var sportsmen = new Sportsman [_sportsmen.Length + 1];
+                var sportsmen = new Sportsman[_sportsmen.Length + 1];
                 Array.Copy(_sportsmen, sportsmen, _sportsmen.Length);
                 sportsmen[sportsmen.Length-1] = man;
                 _sportsmen = sportsmen;
