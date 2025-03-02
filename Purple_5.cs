@@ -20,7 +20,7 @@ namespace Lab_6
             {
                 get
                 {
-                    return new string[3] {_animal, _charactertrait, _concept};
+                    return new string[] {_animal, _charactertrait, _concept};
                 }
             }
             public Response(string animal, string charactertrait, string concept)
@@ -34,7 +34,7 @@ namespace Lab_6
                 if (responses == null || questionNumber < 1 || questionNumber > 3) return 0;
                 int count = 0;
                 int ind = questionNumber - 1;
-                foreach (Response x in responses)
+                foreach (var x in responses)
                 {
                     if (x.Answers[ind] != "") count++;
                 }
