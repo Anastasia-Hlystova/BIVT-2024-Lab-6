@@ -32,7 +32,7 @@ namespace Lab_6
                 _time = time;
                 _flag = true;
             }
-            public void Print(string name, double time) 
+            public void Print() 
             {
             }
         }
@@ -95,16 +95,19 @@ namespace Lab_6
             public void Sort()
             {
                 if (_sportsmen == null) return;
-                _sportsmen = _sportsmen.OrderBy(p => p.Time).ToArray();
+                //_sportsmen = _sportsmen.OrderBy(p => p.Time).ToArray();
+                Array.Sort(_sportsmen, (x, y) =>
+                {
+                    if (x.Time < y.Time) return -1;
+                    else if (x.Time > y.Time) return 1;
+                    else return 0;
+                });
             }
             public static Group Merge( Group group1, Group group2)
             {
-                group1.Sort();
-                group2.Sort();
                 var merged = new Group("Финалисты");
                 var g1 = group1._sportsmen;
                 var g2 = group2._sportsmen;
-                
                 if (g1 == null) g1 = new Sportsman[0];
                 if (g2 == null) g2 = new Sportsman[0];
                 merged._sportsmen = new Sportsman[g1.Length + g2.Length];
