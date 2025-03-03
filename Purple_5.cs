@@ -69,7 +69,7 @@ namespace Lab_6
             }
             public void Add(string[] answers)
             {
-                if(_responses == null || answers == null || answers.Length != 3) return;
+                if(_responses == null || answers == null) return;
                 
                 string[] ans = new string[] {null, null, null};
                 for (int i = 0; i < Math.Min(3, answers.Length); i++)
