@@ -26,25 +26,55 @@ namespace Lab_6
             public int CountVotes(Response[] responses, int questionNumber)
             {
                 if (responses == null || responses.Length == 0 || questionNumber < 1 || questionNumber > 3) return 0;
+                int count = 0;
                 if (questionNumber == 1)
                 {
-                    return responses.Count(x => x.Animal != null && x.Animal.Length != 0);
+                    var current = this.Animal;
+                    if (current != "")
+                    {
+                        foreach (var x in responses)
+                        {
+                            if (x.Animal == current)
+                            {
+                                count++;
+                            }
+                        }
+                    }
+                    
                 }
                 else if (questionNumber == 2)
                 {
-                    return responses.Count(x => x.CharacterTrait != null && x.CharacterTrait.Length != 0);
+                    var current = this.CharacterTrait;
+                    if (current != "")
+                    {
+                        foreach (var x in responses)
+                        {
+                            if (x.CharacterTrait == current)
+                            {
+                                count++;
+                            }
+                        }
+                    }
                 }
                 else if (questionNumber == 3)
                 {
-                    return responses.Count(x => x.Concept != null && x.Concept.Length != 0);
+                    var current = this.Concept;
+                    if (current != "")
+                    {
+                        foreach (var x in responses)
+                        {
+                            if (x.Concept == current)
+                            {
+                                count++;
+                            }
+                        }
+                    }
                 }
-                else
-                {
-                    return 0;
-                }
+                return count;
             }
             public void Print()
             {
+                Console.WriteLine(_animal + " " + _charactertrait + " " + _concept);
             }
         }
         public struct Research
@@ -96,6 +126,9 @@ namespace Lab_6
             }
             public void Print()
             {
+                Console.WriteLine(_name);
+                foreach (var r in _responses)
+                    r.Print();
             }
         }
     }
