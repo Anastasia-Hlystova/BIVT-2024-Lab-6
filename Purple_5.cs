@@ -30,7 +30,7 @@ namespace Lab_6
                 if (questionNumber == 1)
                 {
                     var current = this.Animal;
-                    if (current != "")
+                    if (current != null)
                     {
                         foreach (var x in responses)
                         {
@@ -45,7 +45,7 @@ namespace Lab_6
                 else if (questionNumber == 2)
                 {
                     var current = this.CharacterTrait;
-                    if (current != "")
+                    if (current != null)
                     {
                         foreach (var x in responses)
                         {
@@ -59,7 +59,7 @@ namespace Lab_6
                 else if (questionNumber == 3)
                 {
                     var current = this.Concept;
-                    if (current != "")
+                    if (current != null)
                     {
                         foreach (var x in responses)
                         {
